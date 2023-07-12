@@ -3,14 +3,14 @@
 #include <RTClib.h>
 #include <LiquidCrystal.h>
 #include <SoftwareSerial.h>
-
 #include <Servo.h>
+
 Servo myservo;
 int pos = 0; 
 #define relay 7
-#define btn1 6
-#define btn2 5
-#define btn3 4
+#define btn1 6 
+#define btn2 5 
+#define btn3 4 
 #define btn4 2
 
 
@@ -27,7 +27,7 @@ byte Aalpha[8] ={  0b01110,
                    0b00000,
                    0b00000,
                    0b00000
-                   };
+                  };
  byte Malpha[8] ={ 0b10001,
                    0b11011,
                    0b10101,
@@ -35,7 +35,8 @@ byte Aalpha[8] ={  0b01110,
                    0b10001,
                    0b00000,
                    0b00000,
-                   0b00000};                                      
+                   0b00000
+                   };                                      
  byte Palpha[8]={  0b11100,
                    0b10010,
                    0b11100,
@@ -43,7 +44,8 @@ byte Aalpha[8] ={  0b01110,
                    0b10000,
                    0b00000,
                    0b00000,
-                   0b00000};
+                   0b00000
+                   };
 
 void setup() {
   // Masukkan kode BTN3up di sini, untuk dijalankan sekali:
@@ -60,8 +62,8 @@ void setup() {
    pinMode(relay, OUTPUT);
    digitalWrite(relay,LOW); 
    lcd.setCursor(0,0);
-   lcd.print("Arduino Fish Feeder");
-   Serial.print("Arduino Fish Feeder"); 
+   lcd.print("Auto Fish Feeder");
+   Serial.print("Auto Fish Feeder"); 
    lcd.setCursor(0,1);
    lcd.print("  DEVICE ON/OFF ");
    Serial.print("  DEVICE ON/OFF "); 
@@ -125,8 +127,8 @@ if(digitalRead(btn4)==LOW){
  if(HOUR== EEPROM.read(0) && MINUT == EEPROM.read(1)){
   lcd.clear();
   lcd.setCursor(0,0);
-  lcd.print("  DEVICE ON/OFF ");
-  Serial.print(" DEVICE ON/OFF ");
+  lcd.print("  DEVICE ON ");
+  Serial.print(" DEVICE ON ");
   digitalWrite(relay,HIGH);
   myservo.write(180);
   delay(1000);
@@ -176,13 +178,13 @@ if(digitalRead(btn4)==LOW){
   delay(1000);
  /* for (pos = 0; pos <= 180; pos += 1) { // dari 0 derajat ke 180 derajat
     myservo.write(pos);              // memberi tahu servo untuk ke posisi di variable 'pos'
-    delay(15);                       // menunggu 15ms untuk servo untuk mencapai posisi
+    delay(300);                       // menunggu 30ms untuk servo untuk mencapai posisi
   }
   for (pos = 180; pos >= 0; pos -= 1) { // dari 180 derajat ke 0 derajat
     myservo.write(pos);              // memberi tahu servo untuk ke posisi di variable 'pos'
-    delay(15);                       //  menunggu 15ms untuk servo untuk mencapai posisi
-  } */
-   
+    delay(300);                       //  menunggu 30ms untuk servo untuk mencapai posisi
+  } 
+   */
   CheckTime();
  }
 }
